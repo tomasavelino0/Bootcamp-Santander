@@ -17,7 +17,10 @@ public class TransactionService {
   @Autowired
   private TransactionRepository reposity;
 
-  public void createTransaction(TransactionDTO transactionDTO) throws Exception {
+  @Autowired
+  private NotificationService notificationService;
+
+  public Transaction createTransaction(TransactionDTO transactionDTO) throws Exception {
     User sender = this.userService.findUserById(transactionDTO.senderId());
     User receiver = this.userService.findUserById(transactionDTO.receiverId());
 
@@ -35,5 +38,10 @@ public class TransactionService {
     reposity.save(transaction);
     userService.saveUser(sender);
     userService.saveUser(receiver);
+
+    this.notificationService.sendNotification(sender, "Transacao concluida com sucesso");
+    this.notificationService.sendNotification(receiver, "Transancao recebida");
+
+    return transaction;
   }
 }
