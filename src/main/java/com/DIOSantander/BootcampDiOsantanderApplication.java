@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title =
     "API Desenvolvida como projeto final para o bootcamp SantanderDIO, "
-        + "você poderá criar usuários e simular uma transação financeira.", version = "2.0", description = "Employees Information"))
+        + "você poderá criar usuários e simular uma transação financeira.", version = "2.0", description = "transacao entre usuarios"))
 public class BootcampDiOsantanderApplication {
 
   public static void main(String[] args) {
