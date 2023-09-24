@@ -1,9 +1,11 @@
 package com.DIOSantander.services;
 
+import com.DIOSantander.Dtos.UserDTO;
 import com.DIOSantander.domain.user.User;
 import com.DIOSantander.domain.user.UserType;
 import com.DIOSantander.repositories.UserRepository;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,16 @@ public class UserService {
 
   public void saveUser(User user) {
     this.repository.save(user);
+  }
+
+  public User createUser(UserDTO userDTO) {
+    User newUser = new User(userDTO);
+    this.saveUser(newUser);
+    return newUser;
+  }
+
+  public List<User> getAllUser() {
+    return this.repository.findAll();
   }
 
 }
