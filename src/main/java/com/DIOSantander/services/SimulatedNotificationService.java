@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SimulatedNotificationService {
   public ResponseEntity<String> sendNotification(NotificationDTO notificationDTO) {
+    System.out.println(notificationDTO.message());
     return new ResponseEntity<>(HttpStatus.OK);
   }
 }
