@@ -6,6 +6,7 @@ import com.DIOSantander.domain.user.UserType;
 import com.DIOSantander.repositories.UserRepository;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,4 +45,8 @@ public class UserService {
     return this.repository.findAll();
   }
 
+  public User findUserByDocument(String document) throws Exception {
+    return this.repository.findUserByDocument(document)
+        .orElseThrow(() -> new Exception("Usuario nao encontrado"));
+  }
 }
